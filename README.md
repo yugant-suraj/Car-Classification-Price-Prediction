@@ -1,59 +1,77 @@
-# 🎥 Smart Surveillance System (OpenFace)
+# 🚗 Car Classification and Price Prediction
 
-> Real-time face recognition system using OpenFace facial embeddings and SVM-based classification.
+> Machine learning system for car classification and used car price prediction based on vehicle attributes.
 
 ---
 
 ## Overview
-This project implements a **real-time smart surveillance system** capable of detecting and recognizing faces from a live video stream. It uses **OpenFace (FaceNet-based embeddings)** to extract discriminative facial features and a **Support Vector Machine (SVM)** classifier for identity recognition.
+This project implements a **machine learning pipeline** to analyze car data and perform:
+1. **Car classification** based on features such as brand, model, fuel type, transmission, etc.
+2. **Car price prediction** to estimate the market value of a vehicle using historical data.
 
-The system is designed with a **modular pipeline**, enabling easy model replacement, scalability, and real-world deployment.
+The goal is to demonstrate **data preprocessing, feature engineering, model training, and evaluation** on a real-world automotive dataset.
+
+---
+
+## Problem Statement
+Used car pricing depends on multiple factors including:
+- Brand and model
+- Manufacturing year
+- Mileage
+- Fuel type
+- Transmission
+- Ownership history
+
+Accurately estimating prices manually is error-prone. This project applies **machine learning models** to learn pricing patterns from data and automate predictions.
 
 ---
 
 ## System Architecture
 
 <pre>
-Video Stream
+Dataset
   |
   v
-Face Detection (OpenCV DNN)
+Data Cleaning & Preprocessing
   |
   v
-Embedding Extraction (OpenFace)
+Feature Engineering
   |
   v
-128-D Feature Vector
+Train/Test Split
   |
   v
-SVM Classifier
+ML Models
+  |   \
+  |    --> Classification (Car Category / Type)
+  |
+  ---> Regression (Price Prediction)
   |
   v
-Identity + Confidence Score
+Model Evaluation & Prediction
 </pre>
-
-
-
 
 ---
 
 ## Key Features
-- Real-time face detection from live camera feed
-- Deep facial embedding extraction using OpenFace
-- SVM-based identity classification
-- Confidence score for each prediction
-- Modular pipeline (embedding, training, recognition separated)
+- Data cleaning and handling of missing values
+- Exploratory Data Analysis (EDA)
+- Feature encoding for categorical variables
+- Supervised learning models for:
+  - Car classification
+  - Price prediction (regression)
+- Model performance evaluation
+- Predictive insights from real-world car data
 
 ---
 
 ## Tech Stack
-- Python 3.6+
-- OpenCV (DNN module)
-- PyTorch (OpenFace model)
-- scikit-learn (SVM classifier)
+- Python 3.x
+- Pandas
 - NumPy
-- imutils
-- Pickle (model persistence)
+- Matplotlib / Seaborn
+- scikit-learn
+- Jupyter Notebook
 
 ---
 
@@ -61,26 +79,48 @@ Identity + Confidence Score
 
 <pre>
 .
-├── embeddings_extraction.py
-├── train.py
-├── identification.py
-├── embeddings.pickle
-├── recognizer.pickle
-├── le.pickle
 ├── Major_Project_(V_2_5).ipynb
+├── dataset.csv
 └── README.md
 </pre>
 
 ---
 
-## Setup
-Install required dependencies:
+## Dataset
+The dataset contains structured information about cars, including:
+- Brand / Model
+- Year of manufacture
+- Fuel type
+- Transmission
+- Mileage
+- Selling price
 
+> Note: Dataset may require cleaning and normalization before training.
+
+---
+
+## Models Used
+- Linear Regression
+- Decision Tree
+- Random Forest (if applicable)
+- Classification algorithms (based on dataset labels)
+
+---
+
+## Evaluation Metrics
+- Regression:
+  - Mean Absolute Error (MAE)
+  - Mean Squared Error (MSE)
+  - R² Score
+- Classification:
+  - Accuracy
+  - Confusion Matrix
+
+---
+
+## Usage
+
+1. Open the notebook:
 ```bash
-pip install opencv-python torch scikit-learn imutils numpy
-```
-
-## Reference
-
-FaceNet: A Unified Embedding for Face Recognition and Clustering (CVPR 2015)
+jupyter notebook Major_Project_(V_2_5).ipynb
 
